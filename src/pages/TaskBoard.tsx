@@ -1,5 +1,5 @@
 // src/pages/TaskBoard.tsx
- import React from 'react';
+ //import React from 'react';
 
 /* … rest identical, just add explicit e: React.FormEvent … */
 import { useState, useRef } from 'react';
@@ -106,8 +106,9 @@ export default function TaskBoard() {
               <Input
                 placeholder="New task..."
                 value={newText}
-                onChange={(e) => setNewText(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && addTask()}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewText(e.target.value)}
+                onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && addTask()}
+
                 className="rounded-base border-2 border-black bg-white text-black placeholder-slate-500 focus:ring-2 focus:ring-black"
               />
               <Button onClick={addTask} className="aspect-square bg-white">
@@ -128,19 +129,19 @@ export default function TaskBoard() {
                   {editingId === task.id ? (
                     <Input
                       value={editText}
-                      onChange={(e) => setEditText(e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEditText(e.target.value)}
                       onBlur={saveEdit}
-                      onKeyDown={(e) => e.key === 'Enter' && saveEdit()}
+                      onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && saveEdit()}
                       className="flex-1 h-8"
                     />
                   ) : (
                     <span className="flex-1 font-medium">{task.text}</span>
                   )}
 
-                  <Button variant="ghost" size="sm" onClick={() => startEdit(task)}>
+                  <Button variant="neutral" size="sm" onClick={() => startEdit(task)}>
                     <Edit3 size={16} />
                   </Button>
-                  <Button variant="ghost" size="sm" onClick={() => deleteTask(task.id)}>
+                  <Button variant="neutral" size="sm" onClick={() => deleteTask(task.id)}>
                     <Trash2 size={16} />
                   </Button>
                 </li>
@@ -169,7 +170,7 @@ export default function TaskBoard() {
                     <CheckSquare className="w-5 h-5 text-green-700" />
                   </button>
                   <span className="flex-1 line-through">{task.text}</span>
-                  <Button variant="ghost" size="sm" onClick={() => deleteTask(task.id)}>
+                  <Button variant="neutral" size="sm" onClick={() => deleteTask(task.id)}>
                     <Trash2 size={16} />
                   </Button>
                 </li>

@@ -1,5 +1,10 @@
+// tsconfig.node.json
+
 {
   "compilerOptions": {
+    // 👇 THIS IS THE CRITICAL LINE THAT WAS MISSING
+    "composite": true,
+
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "target": "ES2023",
     "lib": ["ES2023"],
