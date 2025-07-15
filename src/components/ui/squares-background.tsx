@@ -1,21 +1,22 @@
 import { useRef, useEffect, useState } from "react"
 
 interface SquaresProps {
-  direction?: "right" | "left" | "up" | "down" | "diagonal"
-  speed?: number
-  borderColor?: string
-  squareSize?: number
-  hoverFillColor?: string
-  className?: string
+  direction?: 'right' | 'left' | 'up' | 'down' | 'diagonal';
+  speed?: number;
+  borderColor?: string;
+  squareSize?: number;
+  hoverFillColor?: string;
+  className?: string;
 }
 
+
 export function Squares({
-  direction = "right",
+  direction = 'right',
   speed = 1,
-  borderColor = "#333",
+  borderColor = '#333',
   squareSize = 40,
-  hoverFillColor = "#222",
-  className,
+  hoverFillColor = '#222',
+  className = '',
 }: SquaresProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const requestRef = useRef<number>()

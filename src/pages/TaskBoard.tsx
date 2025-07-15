@@ -4,7 +4,7 @@ import { Trash2, Plus, Edit3, CheckSquare, Square } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Squares } from '@/components/ui/squares-background';
-
+import { signOut } from '@/lib/auth';
 type Task = {
   id: string;
   text: string;

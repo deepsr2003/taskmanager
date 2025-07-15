@@ -1,63 +1,59 @@
-// src/features/auth/components/SignUpForm.tsx
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
-export default function SignUpForm() {
+interface Props {
+  onSubmit: (email: string, password: string) => Promise<void>;
+  error?: string;
+}
+
+export default function SignUpForm({ onSubmit, error }: Props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password !== confirm) {
-      alert('Passwords do not match');
-      return;
-    }
-    // TODO: wire to real API
-    console.log('Sign-up:', { email, password });
+    if (password !== confirm) return alert('Passwords do not match');
+    await onSubmit(email, password);
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 w-full">
-      <div>
-        <label className="text-sm font-semibold mb-1 block">Email</label>
-        <Input
-          type="email"
-          placeholder="you@example.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          className="rounded-base border-2 border-black focus:ring-2 focus:ring-black"
-        />
-      </div>
-
-      <div>
-        <label className="text-sm font-semibold mb-1 block">Password</label>
-        <Input
-          type="password"
-          placeholder="••••••••"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className="rounded-base border-2 border-black focus:ring-2 focus:ring-black"
-        />
-      </div>
-
-      <div>
-        <label className="text-sm font-semibold mb-1 block">Confirm Password</label>
-        <Input
-          type="password"
-          placeholder="••••••••"
-          value={confirm}
-          onChange={(e) => setConfirm(e.target.value)}
-          required
-          className="rounded-base border-2 border-black focus:ring-2 focus:ring-black"
-        />
-      </div>
-
+      {error && <p className="text-red-600 text-sm">{error}</p>}
+      <Input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        className="rounded-base border-2 border-black focus:ring-2 focus:ring-black"
+      />
+      <Input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        className="rounded-base border-2 border-black focus:ring-2 focus:ring-black"
+      />
+      <Input
+        type="password"
+        placeholder="Confirm Password"
+        value={confirm}
+        onChange={(e) => setConfirm(e.target.value)}
+        required
+        className="rounded-base border-2 border-black focus:ring-2 focus:ring-black"
+      />
       <Button type="submit" className="w-full">
-        Create Account
+        Sign Up
+      </Button>
+    </form>
+  );
+}
+      />
+      <Button type="submit" className="w-full">
+        Sign In
       </Button>
     </form>
   );
