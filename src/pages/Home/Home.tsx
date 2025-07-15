@@ -4,7 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Squares } from '@/components/ui/squares-background';
 import SignInForm from '@/features/auth/components/SignInForm';
 import SignUpForm from '@/features/auth/components/SignUpForm';
-import { signIn, signUp } from '@/lib/auth';
+//import { signIn, signUp } from '@/lib/auth';
+
+
 
 export default function HomePage() {
   const [mode, setMode] = useState<'signin' | 'signup' | null>(null);
