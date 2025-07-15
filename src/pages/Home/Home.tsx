@@ -28,7 +28,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative w-screen h-screen overflow-hidden">
       <Squares
         className="absolute inset-0 -z-10"
         direction="diagonal"
@@ -37,7 +37,7 @@ export default function HomePage() {
         hoverFillColor="#475569"
         squareSize={40}
       />
-      <main className="relative z-0 flex flex-col items-center justify-center min-h-screen p-4 space-y-6">
+      <main className="relative z-10 flex flex-col items-center justify-center h-full p-4 space-y-6">
         <h1 className="text-4xl font-bold text-white drop-shadow">Task Manager</h1>
 
         <div className="flex gap-4">
