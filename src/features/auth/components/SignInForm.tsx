@@ -23,7 +23,7 @@ export default function SignInForm({ onSubmit, error }: Props) {
         type="email"
         placeholder="Email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
         required
         className="rounded-base border-2 border-black focus:ring-2 focus:ring-black"
       />
@@ -31,7 +31,7 @@ export default function SignInForm({ onSubmit, error }: Props) {
         type="password"
         placeholder="Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
         required
         className="rounded-base border-2 border-black focus:ring-2 focus:ring-black"
       />

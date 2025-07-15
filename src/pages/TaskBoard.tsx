@@ -1,4 +1,7 @@
 // src/pages/TaskBoard.tsx
+ import React from 'react';
+
+/* … rest identical, just add explicit e: React.FormEvent … */
 import { useState, useRef } from 'react';
 import { Trash2, Plus, Edit3, CheckSquare, Square } from 'lucide-react';
 import { Button } from '@/components/ui/button';

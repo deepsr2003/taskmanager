@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Squares } from '@/components/ui/squares-background';
 import SignInForm from '@/features/auth/components/SignInForm';
 import SignUpForm from '@/features/auth/components/SignUpForm';
 import { signIn, signUp } from '@/lib/auth';
 
 export default function HomePage() {
   const [mode, setMode] = useState<'signin' | 'signup' | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | undefined>();
 
   const handleSignIn = async (email: string, password: string) => {
-    setError(null);
+    setError(undefined);
     const { error } = await signIn(email, password);
     if (error) setError('Invalid credentials');
   };
 
   const handleSignUp = async (email: string, password: string) => {
-    setError(null);
+    setError(undefined);
     const { error } = await signUp(email, password);
     if (error?.message.includes('already registered'))
       setError('Email already exists');

@@ -14,10 +14,7 @@ export default function SignUpForm({ onSubmit, error }: Props) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password !== confirm) {
-      alert('Passwords do not match');
-      return;
-    }
+    if (password !== confirm) return alert('Passwords do not match');
     await onSubmit(email, password);
   };
 
@@ -28,7 +25,7 @@ export default function SignUpForm({ onSubmit, error }: Props) {
         type="email"
         placeholder="Email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
         required
         className="rounded-base border-2 border-black focus:ring-2 focus:ring-black"
       />
@@ -36,7 +33,7 @@ export default function SignUpForm({ onSubmit, error }: Props) {
         type="password"
         placeholder="Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
         required
         className="rounded-base border-2 border-black focus:ring-2 focus:ring-black"
       />
@@ -44,7 +41,7 @@ export default function SignUpForm({ onSubmit, error }: Props) {
         type="password"
         placeholder="Confirm Password"
         value={confirm}
-        onChange={(e) => setConfirm(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setConfirm(e.target.value)}
         required
         className="rounded-base border-2 border-black focus:ring-2 focus:ring-black"
       />

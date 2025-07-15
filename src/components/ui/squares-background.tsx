@@ -18,7 +18,7 @@ export function Squares({
   hoverFillColor = '#222',
   className = '',
 }: SquaresProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null) ;
   const requestRef = useRef<number>()
   const numSquaresX = useRef<number>()
   const numSquaresY = useRef<number>()
