@@ -1,4 +1,7 @@
 // src/App.tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage   from '@/pages/Home';
 import TaskBoard  from '@/pages/TaskBoard';
@@ -24,11 +27,13 @@ export default function App() {
 }
 
 /* Magic-link redirect catcher */
+// src/App.tsx
 function AuthCallback() {
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
-      if (data.user) window.location.replace('/interface');
+      if (data?.user) window.location.replace('/interface');
     });
   }, []);
+
   return <p>Logging you in…</p>;
 }
