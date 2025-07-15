@@ -1,12 +1,9 @@
 // src/components/ProtectedRoute.tsx
-// src/components/ProtectedRoute.tsx
-import { useState, useEffect } from 'react';
-// src/components/ProtectedRoute.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { supabase } from '@/lib/supabase';
 
-export default function ProtectedRoute({ children }: { children: JSX.Element }) {
+export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -22,5 +19,5 @@ export default function ProtectedRoute({ children }: { children: JSX.Element }) 
   }, []);
 
   if (loading) return <p>Loading…</p>;
-  return user ? children : <Navigate to="/" replace />;
+  return user ? <>{children}</> : <Navigate to="/" replace />;
 }
