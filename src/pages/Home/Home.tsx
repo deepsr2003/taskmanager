@@ -9,6 +9,7 @@ import { signIn, signUp } from '@/lib/auth';
 
 
 
+
 export default function HomePage() {
   const [mode, setMode] = useState<'signin' | 'signup' | null>(null);
   const [error, setError] = useState<string | undefined>();
@@ -28,7 +29,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden">
+    <div className="relative w-screen h-screen overflow-hidden bg-[#060606]">
       <Squares
         className="absolute inset-0 -z-10"
         direction="diagonal"
