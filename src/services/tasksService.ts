@@ -8,7 +8,6 @@ export const tasksService = {
       .from('tasks')
       .select('*')
       .order('created_at', { ascending: false });
-
     if (error) throw error;
     return data ?? [];
   },
@@ -19,7 +18,6 @@ export const tasksService = {
       .insert([{ text }])
       .select()
       .single();
-
     if (error) throw error;
     return data!;
   },
@@ -31,7 +29,6 @@ export const tasksService = {
       .eq('id', id)
       .select()
       .single();
-
     if (error) throw error;
     return data!;
   },
