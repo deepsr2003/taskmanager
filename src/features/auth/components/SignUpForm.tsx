@@ -14,7 +14,10 @@ export default function SignUpForm({ onSubmit, error }: Props) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password !== confirm) return alert('Passwords do not match');
+    if (password !== confirm) {
+      alert('Passwords do not match');
+      return;
+    }
     await onSubmit(email, password);
   };
 
@@ -47,13 +50,6 @@ export default function SignUpForm({ onSubmit, error }: Props) {
       />
       <Button type="submit" className="w-full">
         Sign Up
-      </Button>
-    </form>
-  );
-}
-      />
-      <Button type="submit" className="w-full">
-        Sign In
       </Button>
     </form>
   );
